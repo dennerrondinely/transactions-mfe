@@ -21,7 +21,7 @@ steps:
         echo "Versão detectada: $${VERSION}"
 
         # Criar pasta da versão no bucket e subir os arquivos
-        gsutil -m cp -r build/* gs://transactions-mfe/$${VERSION}/
+        gsutil -m cp -r build/* gs://transactions-mfe/
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gsutil'
