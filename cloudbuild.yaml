@@ -22,7 +22,7 @@ steps:
         echo "Versão detectada: $${VERSION}"
 
         # Criar pasta da versão no bucket e subir os arquivos
-        gsutil -m cp -r build/* gs://teste-415119.appspot.com/$MODULE_NAME/$${VERSION}/
+        gsutil -m cp -r build/* gs://teste-415119.appspot.com/MODULE_NAME/$${VERSION}/
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gsutil'
     args:
