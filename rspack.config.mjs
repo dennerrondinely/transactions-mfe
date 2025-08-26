@@ -35,17 +35,7 @@ export default env => {
     module: {
       rules: [
         ...Repack.getJsTransformRules(),
-        ...Repack.getAssetTransformRules(),
-        {
-          test: /\.js$/,
-          exclude: /node_modules\/(?!react-native)/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['module:@react-native/babel-preset'],
-            },
-          },
-        },
+        ...Repack.getAssetTransformRules()
       ],
     },
     plugins: [
@@ -61,11 +51,11 @@ export default env => {
         },
       }),
       new Repack.plugins.ModuleFederationPluginV2({
-        name: 'transactions',
-        filename: 'transactions.container.bundle',
+        name: 'Transactions',
+        filename: 'Transactions.container.bundle',
         dts: false,
         exposes: {
-          './transactions': './src/screens/RemoteScreen',
+          './Transactions': './src/screens/Transactions',
         },
         shared: Object.fromEntries(
           Object.entries(pkg.dependencies).map(([dep, { version }]) => {

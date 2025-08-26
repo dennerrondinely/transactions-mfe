@@ -1,7 +1,7 @@
-import RemoteScreen from './src/screens/RemoteScreen';
+import Transactions from './src/screens/Transactions';
 
 function App() {
-  return <RemoteScreen />;
+  return <Transactions />;
 }
 
 export default App;

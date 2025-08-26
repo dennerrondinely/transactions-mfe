@@ -1,19 +1,19 @@
 import TransactionItem from '../components/TransactionItem';
-// @ts-ignore
-import { useMoneyStore } from 'store/transactionsStore';
 import { globalStyles } from '../styles/globalStyles';
 import { FlatList, Text, View } from 'react-native';
 
-export default function Transactions() {
-  const { transactions } = useMoneyStore();
+const transactions = [];
 
+export default function Transactions() {
   return (
     <View style={globalStyles.screenContainer}>
       <FlatList
         data={transactions}
         renderItem={({ item }) => <TransactionItem {...item} />}
         ListEmptyComponent={
-          <Text style={globalStyles.secondaryText}>Ainda não há nenhum item!</Text>
+          <Text style={globalStyles.secondaryText}>
+            Ainda não há nenhum item!
+          </Text>
         }
         style={globalStyles.content}
       />
