@@ -10,7 +10,6 @@ steps:
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
-    secretEnv: ['FIREBASE_SERVICE_ACCOUNT_JSON', 'MODULE_NAME', 'BUCKET_URL', 'TRANSACTION_MODULE_ID', 'COLLECTION_NAME']
     args:
       - '-c'
       - |
@@ -22,14 +21,15 @@ steps:
         echo "Versão detectada: $${VERSION}"
 
         # Criar pasta da versão no bucket e subir os arquivos
-        gsutil -m cp build/* gs://transactions-mfe/$${VERSION}/
+        gsutil -m cp -r build/* gs://teste-415119.appspot.com/$${VERSION}/
+
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gsutil'
     args:
       - 'iam'
       - 'ch'
       - 'allUsers:objectViewer'
-      - 'gs://transactions-mfe'
+      - 'gs://teste-415119.appspot.com'
   - name: 'gcr.io/cloud-builders/npm'
     secretEnv: ['FIREBASE_SERVICE_ACCOUNT_JSON', 'MODULE_NAME', 'BUCKET_URL', 'TRANSACTION_MODULE_ID', 'COLLECTION_NAME']
     args: ['run', 'update:firebase']
