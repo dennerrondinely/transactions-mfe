@@ -1,10 +1,12 @@
 import TransactionItem from '../components/TransactionItem';
 import { globalStyles } from '../styles/globalStyles';
 import { FlatList, Text, View } from 'react-native';
-
-const transactions = [];
+// @ts-ignore
+import { useMoneyStore } from 'store/Store';
 
 export default function Transactions() {
+    const { transactions } = useMoneyStore();
+
   return (
     <View style={globalStyles.screenContainer}>
       <FlatList
