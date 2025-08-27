@@ -35,7 +35,7 @@ export default env => {
     module: {
       rules: [
         ...Repack.getJsTransformRules(),
-        ...Repack.getAssetTransformRules()
+        ...Repack.getAssetTransformRules(),
       ],
     },
     plugins: [
@@ -56,6 +56,9 @@ export default env => {
         dts: false,
         exposes: {
           './Transactions': './src/screens/Transactions',
+        },
+        remotes: {
+          store: `store@https://storage.googleapis.com/teste-415119.appspot.com/Store/0.0.1/outputs/${platform}/remotes/Store.container.bundle`,
         },
         shared: Object.fromEntries(
           Object.entries(pkg.dependencies).map(([dep, { version }]) => {
