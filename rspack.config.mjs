@@ -58,7 +58,7 @@ export default env => {
           './Transactions': './src/screens/Transactions',
         },
         remotes: {
-          store: `store@https://storage.googleapis.com/teste-415119.appspot.com/Store/0.0.1/outputs/${platform}/remotes/Store.container.bundle`,
+          Store: `Store@https://storage.googleapis.com/teste-415119.appspot.com/Store/0.0.1/outputs/${platform}/remotes/Store.container.bundle`,
         },
         shared: Object.fromEntries(
           Object.entries(pkg.dependencies).map(([dep, { version }]) => {
